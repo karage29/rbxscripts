@@ -1,5 +1,11 @@
 local key = Enum.KeyCode.X -- key to toggle invisibility
 
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Invisible Ready";
+    Duration = 1;
+    Text = "";
+})
+
 --// dont edit script below
 local invis_on = false
 function onKeyPress(inputObject, chat)
