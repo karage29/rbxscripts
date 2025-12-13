@@ -33,6 +33,7 @@ function onKeyPress(inputObject, chat)
                 Duration = 1;
                 Text = "";
             })
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 75
         else
             workspace:FindFirstChild('invischair'):Remove()
             game.StarterGui:SetCore("SendNotification", {
@@ -40,8 +41,24 @@ function onKeyPress(inputObject, chat)
                 Duration = 1;
                 Text = "";
             })
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
         end
     end
 end
 
+local function setup(char)
+    local humanoid = char:WaitForChild("Humanoid")
+
+    humanoid.GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+        if invis_on and humanoid.WalkSpeed ~= 75 then
+            humanoid.WalkSpeed = 75
+        end
+    end)
+end
+
+if game.Players.LocalPlayer.Character then
+    setup(game.Players.LocalPlayer.Character)
+end
+
+game.Players.LocalPlayer.CharacterAdded:Connect(setup)
 game:GetService("UserInputService").InputBegan:connect(onKeyPress)
