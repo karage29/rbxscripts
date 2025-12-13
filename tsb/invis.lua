@@ -61,4 +61,4 @@ if game.Players.LocalPlayer.Character then
 end
 
 game.Players.LocalPlayer.CharacterAdded:Connect(setup)
-game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+game:GetService("UserInputService").InputBegan:Connect(onKeyPress)
