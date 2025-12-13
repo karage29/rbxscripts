@@ -49,7 +49,7 @@ end
 local function setup(char)
     local humanoid = char:WaitForChild("Humanoid")
 
-    humanoid.GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+    humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
         if invis_on and humanoid.WalkSpeed ~= 75 then
             humanoid.WalkSpeed = 75
         end
